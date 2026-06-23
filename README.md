@@ -29,43 +29,43 @@ Password: 123456
 ## Project Structure
 crm-opportunity-tracker/
 ├── backend/
-│   ├── src/
-│   │   ├── config/
-│   │   │   └── db.js
-│   │   ├── controllers/
-│   │   │   ├── authController.js
-│   │   │   └── opportunityController.js
-│   │   ├── middleware/
-│   │   │   └── authMiddleware.js
-│   │   ├── models/
-│   │   │   ├── User.js
-│   │   │   └── Opportunity.js
-│   │   ├── routes/
-│   │   │   ├── authRoutes.js
-│   │   │   └── opportunityRoutes.js
-│   │   └── server.js
-│   ├── package.json
-│   └── .env.example
+│ ├── src/
+│ │ ├── config/
+│ │ │ └── db.js
+│ │ ├── controllers/
+│ │ │ ├── authController.js
+│ │ │ └── opportunityController.js
+│ │ ├── middleware/
+│ │ │ └── authMiddleware.js
+│ │ ├── models/
+│ │ │ ├── User.js
+│ │ │ └── Opportunity.js
+│ │ ├── routes/
+│ │ │ ├── authRoutes.js
+│ │ │ └── opportunityRoutes.js
+│ │ └── server.js
+│ ├── package.json
+│ └── .env.example
 └── frontend/
-    ├── src/
-    │   ├── components/
-    │   │   ├── Navbar.jsx
-    │   │   ├── OpportunityForm.jsx
-    │   │   └── ProtectedRoute.jsx
-    │   ├── context/
-    │   │   └── AuthContext.jsx
-    │   ├── pages/
-    │   │   ├── Login.jsx
-    │   │   ├── Register.jsx
-    │   │   ├── Dashboard.jsx
-    │   │   ├── CreateOpportunity.jsx
-    │   │   └── EditOpportunity.jsx
-    │   ├── services/
-    │   │   └── api.js
-    │   ├── App.jsx
-    │   └── main.jsx
-    ├── package.json
-    └── .env.example
+├── src/
+│ ├── components/
+│ │ ├── Navbar.jsx
+│ │ ├── OpportunityForm.jsx
+│ │ └── ProtectedRoute.jsx
+│ ├── context/
+│ │ └── AuthContext.jsx
+│ ├── pages/
+│ │ ├── Login.jsx
+│ │ ├── Register.jsx
+│ │ ├── Dashboard.jsx
+│ │ ├── CreateOpportunity.jsx
+│ │ └── EditOpportunity.jsx
+│ ├── services/
+│ │ └── api.js
+│ ├── App.jsx
+│ └── main.jsx
+├── package.json
+└── .env.example
 
 ## How to Run Locally
 
@@ -81,7 +81,6 @@ npm run dev
 
 ## Environment Variables
 
-Backend (.env):
 PORT=5000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret_key
@@ -92,13 +91,14 @@ VITE_API_URL=http://localhost:5000
 
 ## API Endpoints
 
-POST   /api/auth/register     - Register user
-POST   /api/auth/login        - Login user
-GET    /api/auth/me           - Get user profile
-GET    /api/opportunities     - Get all opportunities
-POST   /api/opportunities     - Create opportunity
-PUT    /api/opportunities/:id - Update opportunity
-DELETE /api/opportunities/:id - Delete opportunity
+Method	Endpoint	Description
+POST	/api/auth/register	Register user
+POST	/api/auth/login	Login user
+GET	/api/auth/me	Get user profile
+GET	/api/opportunities	Get all opportunities
+POST	/api/opportunities	Create opportunity
+PUT	/api/opportunities/:id	Update opportunity
+DELETE	/api/opportunities/:id	Delete opportunity
 
 ## Deployment
 - Backend: Render
