@@ -26,49 +26,6 @@ Password: 123456
 - Only the creator can edit/delete their opportunities
 - Dashboard showing all opportunities
 
-## Project Structure
-crm-opportunity-tracker/
-├── backend/
-│ ├── src/
-│ │ ├── config/
-│ │ │ └── db.js
-│ │ ├── controllers/
-│ │ │ ├── authController.js
-│ │ │ └── opportunityController.js
-│ │ ├── middleware/
-│ │ │ └── authMiddleware.js
-│ │ ├── models/
-│ │ │ ├── User.js
-│ │ │ └── Opportunity.js
-│ │ ├── routes/
-│ │ │ ├── authRoutes.js
-│ │ │ └── opportunityRoutes.js
-│ │ └── server.js
-│ ├── package.json
-│ └── .env.example
-└── frontend/
-├── src/
-│ ├── components/
-│ │ ├── Navbar.jsx
-│ │ ├── OpportunityForm.jsx
-│ │ └── ProtectedRoute.jsx
-│ ├── context/
-│ │ └── AuthContext.jsx
-│ ├── pages/
-│ │ ├── Login.jsx
-│ │ ├── Register.jsx
-│ │ ├── Dashboard.jsx
-│ │ ├── CreateOpportunity.jsx
-│ │ └── EditOpportunity.jsx
-│ ├── services/
-│ │ └── api.js
-│ ├── App.jsx
-│ └── main.jsx
-├── package.json
-└── .env.example
-
-text
-
 ## How to Run Locally
 
 Backend:
@@ -76,14 +33,11 @@ cd backend
 npm install
 npm run dev
 
-text
-
 Frontend:
 cd frontend
 npm install
 npm run dev
 
-text
 
 ## Environment Variables
 
@@ -93,12 +47,10 @@ MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret_key
 JWT_EXPIRE=7d
 
-text
 
 Frontend (.env):
 VITE_API_URL=http://localhost:5000
 
-text
 
 ## API Endpoints
 
