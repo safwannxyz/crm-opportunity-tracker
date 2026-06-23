@@ -1,120 +1,111 @@
-# Mini CRM Opportunity Tracker
+# CRM Opportunity Tracker
 
-A full-stack MERN application for managing sales opportunities.
+A MERN stack application to manage sales opportunities.
 
-## Live Demo
-
-- **Frontend:** https://crm-opportunity-tracker-five.vercel.app
-- **Backend:** https://crm-backend-xtqc.onrender.com
+## Live Links
+- Frontend: https://crm-opportunity-tracker-five.vercel.app
+- Backend: https://crm-backend-xtqc.onrender.com
 
 ## Test Credentials
-
 Email: test@live.com
 Password: 123456
 
 ## Tech Stack
+- MongoDB, Express.js, React, Node.js
+- JWT for authentication
+- Tailwind CSS for styling
 
-- **Backend:** Node.js, Express.js, MongoDB, JWT, bcryptjs
-- **Frontend:** React.js, Vite, Tailwind CSS, Axios
+## Prerequisites
+- Node.js installed
+- MongoDB Atlas account (or local MongoDB)
+- Git
 
 ## Features
+- User registration and login
+- Create, view, edit, delete opportunities
+- Only the creator can edit/delete their opportunities
+- Dashboard showing all opportunities
 
-- User Registration & Login with JWT Authentication
-- Create, View, Update, Delete Opportunities
-- Ownership-based Authorization
-- Dashboard with opportunity statistics
-- Responsive Design
+## Project Structure
+crm-opportunity-tracker/
+├── backend/
+│   ├── src/
+│   │   ├── config/
+│   │   │   └── db.js
+│   │   ├── controllers/
+│   │   │   ├── authController.js
+│   │   │   └── opportunityController.js
+│   │   ├── middleware/
+│   │   │   └── authMiddleware.js
+│   │   ├── models/
+│   │   │   ├── User.js
+│   │   │   └── Opportunity.js
+│   │   ├── routes/
+│   │   │   ├── authRoutes.js
+│   │   │   └── opportunityRoutes.js
+│   │   └── server.js
+│   ├── package.json
+│   └── .env.example
+└── frontend/
+    ├── src/
+    │   ├── components/
+    │   │   ├── Navbar.jsx
+    │   │   ├── OpportunityForm.jsx
+    │   │   └── ProtectedRoute.jsx
+    │   ├── context/
+    │   │   └── AuthContext.jsx
+    │   ├── pages/
+    │   │   ├── Login.jsx
+    │   │   ├── Register.jsx
+    │   │   ├── Dashboard.jsx
+    │   │   ├── CreateOpportunity.jsx
+    │   │   └── EditOpportunity.jsx
+    │   ├── services/
+    │   │   └── api.js
+    │   ├── App.jsx
+    │   └── main.jsx
+    ├── package.json
+    └── .env.example
 
-## Setup Instructions
+## How to Run Locally
 
-### Prerequisites
-
-- Node.js installed
-- MongoDB Atlas account
-
-### Backend Setup
-
-```bash
+Backend:
 cd backend
 npm install
 npm run dev
 
-Frontend Setup
+Frontend:
 cd frontend
 npm install
 npm run dev
 
-Environment Variables
-Backend (.env)
-text
+## Environment Variables
+
+Backend (.env):
 PORT=5000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret_key
 JWT_EXPIRE=7d
 
-
-Frontend (.env)
-text
+Frontend (.env):
 VITE_API_URL=http://localhost:5000
 
+## API Endpoints
 
-API Endpoints
-Authentication
-Method	Endpoint	Description
-POST	/api/auth/register	Register a new user
-POST	/api/auth/login	Login user
-GET	/api/auth/me	Get user profile
+POST   /api/auth/register     - Register user
+POST   /api/auth/login        - Login user
+GET    /api/auth/me           - Get user profile
+GET    /api/opportunities     - Get all opportunities
+POST   /api/opportunities     - Create opportunity
+PUT    /api/opportunities/:id - Update opportunity
+DELETE /api/opportunities/:id - Delete opportunity
 
+## Deployment
+- Backend: Render
+- Frontend: Vercel
+- Database: MongoDB Atlas
 
-Opportunities
-Method	Endpoint	Description
-GET	/api/opportunities	Get all opportunities
-POST	/api/opportunities	Create opportunity
-PUT	/api/opportunities/:id	Update opportunity
-DELETE	/api/opportunities/:id	Delete opportunity
-
-
-Deployment
-Backend: Render
-Frontend: Vercel
-Database: MongoDB Atlas
-
-
-
-Project Structure
-text
-├── backend/
-│   ├── src/
-│   │   ├── config/
-│   │   ├── controllers/
-│   │   ├── middleware/
-│   │   ├── models/
-│   │   ├── routes/
-│   │   └── server.js
-│   └── package.json
-├── frontend/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── context/
-│   │   ├── pages/
-│   │   ├── services/
-│   │   └── App.jsx
-│   └── package.json
-└── README.md
-
-
-Known Limitations
-No pagination (loads all opportunities)
-No search/filter functionality
-Basic form validation only
-
-
-
-Future Improvements
-Add pagination and search
-Add email verification
-Add activity logs
-Add Kanban board view
-text
----
-```
+## Limitations
+- No pagination
+- No search/filter
+- Basic validation only
