@@ -8,9 +8,7 @@ const generateToken = (id) => {
   });
 };
 
-// @desc    Register a new user
-// @route   POST /api/auth/register
-// @access  Public
+// Register User
 const registerUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -21,65 +19,45 @@ const registerUser = async (req, res) => {
       return res.status(400).json({ message: "User already exists" });
     }
 
-    // Check required fields
-    if (!name || !email || !password) {
-      return res
-        .status(400)
-        .json({ message: "Please fill all required fields" });
-    }
-
     // Create user
     const user = await User.create({ name, email, password });
 
-    if (user) {
-      res.status(201).json({
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-        token: generateToken(user._id),
-      });
-    }
+    res.status(201).json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      token: generateToken(user._id),
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-// @desc    Login user
-// @route   POST /api/auth/login
-// @access  Public
+// Login User
 const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Check required fields
-    if (!email || !password) {
-      return res
-        .status(400)
-        .json({ message: "Please provide email and password" });
-    }
-
-    // Find user by email
+    // Find user
     const user = await User.findOne({ email });
 
     // Check if user exists and password matches
-    if (user && (await user.matchPassword(password))) {
-      res.json({
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-        token: generateToken(user._id),
-      });
-    } else {
-      res.status(401).json({ message: "Invalid email or password" });
+    if (!user || !(await user.matchPassword(password))) {
+      return res.status(401).json({ message: "Invalid email or password" });
     }
+
+    res.json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      token: generateToken(user._id),
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-// @desc    Get logged in user profile
-// @route   GET /api/auth/me
-// @access  Private
+// Get User Profile
 const getMe = async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("-password");
@@ -89,5 +67,4 @@ const getMe = async (req, res) => {
   }
 };
 
-// Export all functions
 module.exports = { registerUser, loginUser, getMe };
